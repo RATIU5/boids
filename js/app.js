@@ -33,25 +33,25 @@ function draw() {
 
 	for (const boid of flock) {
 		// Enable boids to wrap around the screen
-		boid.wrap(min, max);
+		boid.applyWrap(min, max);
 
 		// Setup boid forces
-		let separation = boid.createBoidForce();
-		let alignment = boid.createBoidForce();
-		let cohesion = boid.createBoidForce();
+		let separationForce = boid.createBoidForce();
+		let alignmentForce = boid.createBoidForce();
+		let cohesionForce = boid.createBoidForce();
 
 		for (const flockmate of flock) {
 			// Skip if the boid is itself
 			if (boid == flockmate) continue;
 			// Calculate and assign the forces to the boid forces
-			boid.assignSeparationForce(flockmate, separation, SEPARATION_SIZE);
-			boid.assignAlignmentForce(flockmate, alignment, ALIGNMENT_SIZE);
-			boid.assignCohesionForce(flockmate, cohesion, COHESION_SIZE);
+			boid.assignSeparationForce(flockmate, separationForce, SEPARATION_SIZE);
+			boid.assignAlignmentForce(flockmate, alignmentForce, ALIGNMENT_SIZE);
+			boid.assignCohesionForce(flockmate, cohesionForce, COHESION_SIZE);
 		}
 		// Apply the forces to the boid
-		boid.applySeparationForce(alignment, SEPARATION_WEIGHT, SEPARATION_SPEED);
-		boid.applyAlignmentForce(separation, ALIGNMENT_WEIGHT, ALIGNMENT_SPEED);
-		boid.applyCohesionForce(cohesion, COHESION_WEIGHT, COHESION_SPEED);
+		boid.applySeparationForce(alignmentForce, SEPARATION_WEIGHT, SEPARATION_SPEED);
+		boid.applyAlignmentForce(separationForce, ALIGNMENT_WEIGHT, ALIGNMENT_SPEED);
+		boid.applyCohesionForce(cohesionForce, COHESION_WEIGHT, COHESION_SPEED);
 
 		if (mouseIsPressed)
 			boid.applyAvoidPointForce(

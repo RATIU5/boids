@@ -81,19 +81,20 @@ class Boid {
 			);
 		}
 	}
-	wrap(min, max, bleed = 4) {
+
+	applyWrap(min, max, margin = 8 * this.scale) {
 		const x = this.pos.x;
 		const y = this.pos.y;
 
-		if (x < min.x - bleed) {
-			this.pos.x = max.x + bleed;
-		} else if (x > max.x + bleed) {
-			this.pos.x = min.x - bleed;
+		if (x < min.x - margin) {
+			this.pos.x = max.x + margin;
+		} else if (x > max.x + margin) {
+			this.pos.x = min.x - margin;
 		}
-		if (y < min.y - bleed) {
-			this.pos.y = max.y + bleed;
-		} else if (y > max.y + bleed) {
-			this.pos.y = min.y - bleed;
+		if (y < min.y - margin) {
+			this.pos.y = max.y + margin;
+		} else if (y > max.y + margin) {
+			this.pos.y = min.y - margin;
 		}
 	}
 
