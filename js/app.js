@@ -1,7 +1,6 @@
 const flock = [];
 
 let min, max;
-let sound;
 
 const SEPARATION_SIZE = 30;
 const ALIGNMENT_SIZE = 60;
