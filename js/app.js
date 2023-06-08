@@ -1,9 +1,16 @@
+const flock = spawnBoids(100);
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
     background(10);
+
+    for (const boid of flock) {
+        boid.update(4);
+        boid.draw();
+    }
 }
 
 function spawnBoids(amount) {
