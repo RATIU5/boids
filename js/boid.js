@@ -52,6 +52,16 @@ class Boid {
         }
     }
 
+    wrap() {
+        const x = this.pos.x;
+        const y = this.pos.y;
+        const off = (this.perceptionRadius * this.scale) / 2;
+
+        if (x < -off) {
+            this.pos.x = width + off;
+        }
+    }
+
     update(maxSpeed) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
