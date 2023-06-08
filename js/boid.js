@@ -43,8 +43,8 @@ class Boid {
         const x = this.pos.x;
         const y = this.pos.y;
 
-        if (x < 0) {
-            this.pos.mult(-1);
+        if (x < 0 || x > width) {
+            this.vel.mult(-1);
         }
     }
 

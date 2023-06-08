@@ -9,6 +9,7 @@ function draw() {
     background(50);
 
     for (const boid of flock) {
+        boid.bounce();
         boid.update(4);
         boid.draw();
     }
