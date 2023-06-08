@@ -16,7 +16,12 @@ function draw() {
 function spawnBoids(amount) {
     let flock = [];
     for (let i = 0; i < amount; i++) {
-        const boid = new Boid();
+        const vel = p5.Vector.random2D();
+        vel.setMag(random(1, 5));
+
+        const boid = new Boid({
+            pos: createVector(random(width), random(height)),
+        });
         flock.push(boid);
     }
 
