@@ -36,7 +36,7 @@ class Boid {
             this.color.levels[2],
             20
         );
-        ellipse(this.pos.x, this.pos.y, this.perceptionRadius * scale);
+        ellipse(this.pos.x, this.pos.y, (this.perceptionRadius * scale) / 2);
     }
 
     update(maxSpeed) {

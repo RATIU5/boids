@@ -20,11 +20,13 @@ function spawnBoids(amount) {
         const vel = p5.Vector.random2D();
         vel.setMag(random(1, 5));
 
+        const scale = random(1, 2);
+
         const boid = new Boid({
             pos: createVector(random(width), random(height)),
             vel: vel,
             perceptionRadius: 50,
-            scale: 2,
+            scale: scale,
             color: color(random(50, 255), random(50, 255), 100),
         });
         flock.push(boid);
