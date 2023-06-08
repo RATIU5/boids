@@ -18,12 +18,17 @@ class Boid {
         fill(this.color);
         noStroke();
 
-        ellipse(
-            this.pos.x,
-            this.pos.y,
-            this.perceptionRadius,
-            this.perceptionRadius
-        );
+        push();
+        translate(this.pos.x, this.pos.y);
+        rotate(this.vel.heading() + PI / 2);
+        const scale = this.scale;
+        beginShape();
+        vertex(0 * scale, -7 * scale);
+        vertex(-3 * scale, 7 * scale);
+        vertex(0, 5 * scale);
+        vertex(3 * scale, 7 * scale);
+        endShape(CLOSE);
+        pop();
     }
 
     update(maxSpeed) {
