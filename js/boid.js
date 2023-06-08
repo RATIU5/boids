@@ -39,6 +39,11 @@ class Boid {
         ellipse(this.pos.x, this.pos.y, (this.perceptionRadius * scale) / 2);
     }
 
+    bounce() {
+        const x = this.pos.x;
+        const y = this.pos.y;
+    }
+
     update(maxSpeed) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
