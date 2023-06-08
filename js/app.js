@@ -11,3 +11,10 @@ function draw() {
     fill(100, 250, 5);
     ellipse(i, 300, 100, i);
 }
+
+function spawnBoids(amount) {
+    let flock = [];
+    for (let i = 0; i < amount; i++) {
+        const boid = new Boid();
+    }
+}
