@@ -30,7 +30,12 @@ class Boid {
         endShape(CLOSE);
         pop();
 
-        fill(255, 10);
+        fill(
+            this.color.levels[0],
+            this.color.levels[1],
+            this.color.levels[2],
+            20
+        );
         ellipse(this.pos.x, this.pos.y, this.perceptionRadius);
     }
 
