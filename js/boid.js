@@ -15,4 +15,11 @@ class Boid {
             this.pos.perceptionRadius
         );
     }
+
+    update(maxSpeed) {
+        this.vel.add(this.acc);
+        this.pos.add(this.vel);
+        this.vel.limit(maxSpeed);
+        this.acc.mult(0);
+    }
 }
