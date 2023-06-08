@@ -24,7 +24,7 @@ function spawnBoids(amount) {
             pos: createVector(random(width), random(height)),
             vel: vel,
             perceptionRadius: 50,
-            scale: 1.5,
+            scale: 2,
             color: color(random(50, 255), random(50, 255), 100),
         });
         flock.push(boid);
