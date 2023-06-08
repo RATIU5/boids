@@ -2,11 +2,11 @@ let flock = [];
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    flock = spawnBoids();
+    flock = spawnBoids(100);
 }
 
 function draw() {
-    background(10);
+    background(50);
 
     for (const boid of flock) {
         boid.update(4);
@@ -29,6 +29,6 @@ function spawnBoids(amount) {
         });
         flock.push(boid);
     }
-
+    console.log(flock.length);
     return flock;
 }

@@ -9,21 +9,20 @@ class Boid {
     constructor(boid) {
         this.pos = boid.pos;
         this.vel = boid.vel;
-        this.acc = boid.acc;
         this.perceptionRadius = boid.perceptionRadius;
         this.color = boid.color;
         this.scale = boid.scale;
     }
 
     draw() {
-        fill(30, 40, 100);
+        fill(this.color);
         noStroke();
 
         ellipse(
             this.pos.x,
             this.pos.y,
-            this.pos.perceptionRadius,
-            this.pos.perceptionRadius
+            this.perceptionRadius,
+            this.perceptionRadius
         );
     }
 
