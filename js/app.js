@@ -29,6 +29,5 @@ function spawnBoids(amount) {
         });
         flock.push(boid);
     }
-    console.log(flock.length);
     return flock;
 }
