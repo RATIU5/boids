@@ -1,7 +1,8 @@
-const flock = spawnBoids(100);
+let flock = [];
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    flock = spawnBoids();
 }
 
 function draw() {
@@ -21,6 +22,10 @@ function spawnBoids(amount) {
 
         const boid = new Boid({
             pos: createVector(random(width), random(height)),
+            vel: vel,
+            perceptionRadius: 50,
+            scale: 1.5,
+            color: color(random(50, 255), random(50, 255), 100),
         });
         flock.push(boid);
     }
