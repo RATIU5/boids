@@ -29,6 +29,9 @@ class Boid {
         vertex(3 * scale, 7 * scale);
         endShape(CLOSE);
         pop();
+
+        fill(255, 10);
+        ellipse(this.pos.x, this.pos.y, this.perceptionRadius);
     }
 
     update(maxSpeed) {
