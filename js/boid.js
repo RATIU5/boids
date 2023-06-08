@@ -42,6 +42,10 @@ class Boid {
     bounce() {
         const x = this.pos.x;
         const y = this.pos.y;
+
+        if (x < 0) {
+            this.pos.mult(-1);
+        }
     }
 
     update(maxSpeed) {
