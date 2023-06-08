@@ -59,6 +59,14 @@ class Boid {
 
         if (x < -off) {
             this.pos.x = width + off;
+        } else if (x > width + off) {
+            this.pos.x = -off;
+        }
+
+        if (y < -off) {
+            this.pos.y = height + off;
+        } else if (y > height + off) {
+            this.pos.y = -off;
         }
     }
 
