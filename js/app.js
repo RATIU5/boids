@@ -44,14 +44,14 @@ function draw() {
 
         for (const flockmate of flock) {
             if (boid == flockmate) continue;
-            boid.assignSeparationForce(flockmate, separationForce, 30);
-            boid.assignAlignmentForce(flockmate, alignmentForce, 60);
-            boid.assignCohesionForce(flockmate, cohesionForce, 40);
+            boid.assignSeparationForce(flockmate, separationForce, SEP_SIZE);
+            boid.assignAlignmentForce(flockmate, alignmentForce, ALN_SIZE);
+            boid.assignCohesionForce(flockmate, cohesionForce, COS_SIZE);
         }
 
-        boid.applySeparationForce(separationForce, 0.15, 3);
-        boid.applyAlignmentForce(alignmentForce, 0.02, 3);
-        boid.applyCohesionForce(cohesionForce, 0.095, 3);
+        boid.applySeparationForce(separationForce, 0.15, SEP_SPEED);
+        boid.applyAlignmentForce(alignmentForce, 0.02, ALN_SPEED);
+        boid.applyCohesionForce(cohesionForce, 0.095, COS_SPEED);
 
         boid.update(4);
         boid.draw();
