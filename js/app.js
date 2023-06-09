@@ -25,7 +25,6 @@ function draw() {
 
     for (const boid of flock) {
         boid.wrap(min, max);
-        boid.applyForce(createVector(0, 0.1));
         boid.update(4);
         boid.draw();
     }
