@@ -7,11 +7,16 @@ const PERCEPTION_RADIUS = 40;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+
+    min = createVector(0, 0);
+    max = createVector(width, height);
+
     flock = spawnBoids(BOID_COUNT);
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+    max = createVector(windowWidth, windowHeight);
 }
 
 function draw() {
