@@ -28,15 +28,18 @@ function draw() {
 
         let separationForce = boid.createBoidForce();
         let alignmentForce = boid.createBoidForce();
+        let cohesionForce = boid.createBoidForce();
 
         for (const flockmate of flock) {
             if (boid == flockmate) continue;
             boid.assignSeparationForce(flockmate, separationForce, 30);
             boid.assignAlignmentForce(flockmate, alignmentForce, 60);
+            boid.assignCohesionForce(flockmate, cohesionForce, 40);
         }
 
         boid.applySeparationForce(separationForce, 0.095, 3);
         boid.applyAlignmentForce(alignmentForce, 0.2, 3.25);
+        boid.applyCohesionForce(cohesionForce, 0.1, 3);
 
         boid.update(4);
         boid.draw();
