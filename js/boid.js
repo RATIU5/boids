@@ -129,7 +129,14 @@ class Boid {
     assignCohesionForce(flockmate, boidForce, perceptionRadius) {
         const radius = perceptionRadius ?? this.perceptionRadius;
         let d = dist(this.pos.x, this.pos.y, flockmate.pos.x, flockmate.pos.y);
+
+        if (d < radius) {
+            boidForce[0].add(flockmate.pos);
+            boidForce[1]++;
+        }
     }
+
+    applyCohesionForce(boidForce, maxForce = 0.2, maxSpeed = 4) {}
 
     update(maxSpeed) {
         this.vel.add(this.acc);
