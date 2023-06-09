@@ -1,11 +1,17 @@
 let flock = [];
 
+let min, max;
+
 const BOID_COUNT = 200;
 const PERCEPTION_RADIUS = 40;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     flock = spawnBoids(BOID_COUNT);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
