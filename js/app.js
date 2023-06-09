@@ -27,13 +27,16 @@ function draw() {
         boid.wrap(min, max);
 
         let separationForce = boid.createBoidForce();
+        let alignmentForce = boid.createBoidForce();
 
         for (const flockmate of flock) {
             if (boid == flockmate) continue;
             boid.assignSeparationForce(flockmate, separationForce, 30);
+            boid.assignAlignmentForce(flockmate, alignmentForce, 60);
         }
 
         boid.applySeparationForce(separationForce, 0.095, 3);
+        boid.applyAlignmentForce(alignmentForce, 0.2, 3.25);
 
         boid.update(4);
         boid.draw();
