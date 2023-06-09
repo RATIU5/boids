@@ -63,10 +63,10 @@ class Boid {
             this.pos.x = min.x - off;
         }
 
-        if (y < -off) {
-            this.pos.y = height + off;
-        } else if (y > height + off) {
-            this.pos.y = -off;
+        if (y < min.y - off) {
+            this.pos.y = max.y + off;
+        } else if (y > max.y + off) {
+            this.pos.y = min.y - off;
         }
     }
 
