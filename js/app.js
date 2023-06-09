@@ -9,7 +9,7 @@ function draw() {
     background(50);
 
     for (const boid of flock) {
-        boid.bounce();
+        boid.wrap();
         boid.update(4);
         boid.draw();
     }
@@ -21,7 +21,7 @@ function spawnBoids(amount) {
         const vel = p5.Vector.random2D();
         vel.setMag(random(1, 5));
 
-        const scale = random(1, 2);
+        const scale = random(2, 2);
 
         const boid = new Boid({
             pos: createVector(random(width), random(height)),
