@@ -78,7 +78,21 @@ class Boid {
         return [createVector(0, 0), 0];
     }
 
-    assignSeparationForce(flockmate, boidForce, perceptionRadius) {}
+    assignSeparationForce(flockmate, boidForce, perceptionRadius) {
+        const radius = perceptionRadius ?? this.perceptionRadius;
+        const [force] = boidForce;
+
+        let d = dist(this.pos.x, this.pos.y, flockmate.pos.x, flockmate.pos.y);
+
+        if (d < radius) {
+            const diff = p5.Vector.sub(this.pos, flockmate.pos);
+            diff.div(d);
+            force.add(diff);
+
+            boidForce[0].add(diff);
+            boidForce[1]++;
+        }
+    }
 
     update(maxSpeed) {
         this.vel.add(this.acc);
