@@ -2,9 +2,21 @@ let flock = [];
 
 let min, max;
 
-const BOID_COUNT = 200;
+const BOID_COUNT = 100;
 const PERCEPTION_RADIUS = 40;
 const SCALE = 2;
+
+const SEP_SIZE = 30;
+const ALN_SIZE = 60;
+const COS_SIZE = 40;
+
+const SEP_WEIGHT = 0.2;
+const ALN_WEIGHT = 0.095;
+const COS_WEIGHT = 0.1;
+
+const SEP_SPEED = 3.25;
+const ALN_SPEED = 3;
+const COS_SPEED = 3;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -37,9 +49,9 @@ function draw() {
             boid.assignCohesionForce(flockmate, cohesionForce, 40);
         }
 
-        boid.applySeparationForce(separationForce, 0.095, 3);
-        boid.applyAlignmentForce(alignmentForce, 0.2, 3.25);
-        boid.applyCohesionForce(cohesionForce, 0.1, 3);
+        boid.applySeparationForce(separationForce, 0.15, 3);
+        boid.applyAlignmentForce(alignmentForce, 0.02, 3);
+        boid.applyCohesionForce(cohesionForce, 0.095, 3);
 
         boid.update(4);
         boid.draw();
