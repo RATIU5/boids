@@ -94,6 +94,8 @@ class Boid {
         }
     }
 
+    applySeparationForce(boidForce, maxForce = 0.2, maxSpeed = 4) {}
+
     update(maxSpeed) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
