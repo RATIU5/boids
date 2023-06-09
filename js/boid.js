@@ -52,15 +52,15 @@ class Boid {
         }
     }
 
-    wrap() {
+    wrap(min, max) {
         const x = this.pos.x;
         const y = this.pos.y;
         const off = (this.perceptionRadius * this.scale) / 2;
 
-        if (x < -off) {
-            this.pos.x = width + off;
-        } else if (x > width + off) {
-            this.pos.x = -off;
+        if (x < min.x - off) {
+            this.pos.x = max.x + off;
+        } else if (x > max.x + off) {
+            this.pos.x = min.x - off;
         }
 
         if (y < -off) {
