@@ -1,8 +1,11 @@
 let flock = [];
 
+const BOID_COUNT = 200;
+const PERCEPTION_RADIUS = 40;
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    flock = spawnBoids(100);
+    flock = spawnBoids(BOID_COUNT);
 }
 
 function draw() {
@@ -26,7 +29,7 @@ function spawnBoids(amount) {
         const boid = new Boid({
             pos: createVector(random(width), random(height)),
             vel: vel,
-            perceptionRadius: 50,
+            perceptionRadius: PERCEPTION_RADIUS,
             scale: scale,
             color: color(random(50, 255), random(50, 255), 100),
         });
