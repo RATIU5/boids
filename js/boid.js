@@ -74,6 +74,10 @@ class Boid {
         this.acc.add(force);
     }
 
+    createBoidForce() {
+        return [createVector(0, 0), 0];
+    }
+
     update(maxSpeed) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
