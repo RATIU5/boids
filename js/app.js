@@ -4,6 +4,7 @@ let min, max;
 
 const BOID_COUNT = 200;
 const PERCEPTION_RADIUS = 40;
+const SCALE = 2;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -34,13 +35,11 @@ function spawnBoids(amount) {
         const vel = p5.Vector.random2D();
         vel.setMag(random(1, 5));
 
-        const scale = random(2, 2);
-
         const boid = new Boid({
             pos: createVector(random(width), random(height)),
             vel: vel,
             perceptionRadius: PERCEPTION_RADIUS,
-            scale: scale,
+            scale: SCALE,
             color: color(random(50, 255), random(50, 255), 100),
         });
         flock.push(boid);
