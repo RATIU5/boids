@@ -105,7 +105,15 @@ class Boid {
         }
     }
 
-    assignAlignmentForce(flockmate, boidForce, perceptionRadius) {}
+    assignAlignmentForce(flockmate, boidForce, perceptionRadius) {
+        const radius = perceptionRadius ?? this.perceptionRadius;
+        let d = dist(this.pos.x, this.pos.y, flockmate.pos.x, flockmate.pos.y);
+
+        if (d < radius) {
+            boidForce[0].add(flockmate.vel);
+            boidForce[1]++;
+        }
+    }
 
     update(maxSpeed) {
         this.vel.add(this.acc);
