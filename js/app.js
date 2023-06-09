@@ -11,7 +11,7 @@ function setup() {
     min = createVector(0, 0);
     max = createVector(width, height);
 
-    flock = spawnBoids(BOID_COUNT);
+    spawnBoids(BOID_COUNT);
 }
 
 function windowResized() {
@@ -30,7 +30,6 @@ function draw() {
 }
 
 function spawnBoids(amount) {
-    let flock = [];
     for (let i = 0; i < amount; i++) {
         const vel = p5.Vector.random2D();
         vel.setMag(random(1, 5));
@@ -46,5 +45,4 @@ function spawnBoids(amount) {
         });
         flock.push(boid);
     }
-    return flock;
 }
