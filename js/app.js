@@ -49,9 +49,9 @@ function draw() {
             boid.assignCohesionForce(flockmate, cohesionForce, COS_SIZE);
         }
 
-        boid.applySeparationForce(separationForce, 0.15, SEP_SPEED);
-        boid.applyAlignmentForce(alignmentForce, 0.02, ALN_SPEED);
-        boid.applyCohesionForce(cohesionForce, 0.095, COS_SPEED);
+        boid.applySeparationForce(separationForce, SEP_WEIGHT, SEP_SPEED);
+        boid.applyAlignmentForce(alignmentForce, ALN_WEIGHT, ALN_SPEED);
+        boid.applyCohesionForce(cohesionForce, COS_WEIGHT, COS_SPEED);
 
         boid.update(4);
         boid.draw();
