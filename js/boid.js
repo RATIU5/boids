@@ -70,6 +70,10 @@ class Boid {
         }
     }
 
+    applyForce(force) {
+        this.acc.add(force);
+    }
+
     update(maxSpeed) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
