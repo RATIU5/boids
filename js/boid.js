@@ -105,6 +105,8 @@ class Boid {
         }
     }
 
+    assignAlignmentForce(flockmate, boidForce, perceptionRadius) {}
+
     update(maxSpeed) {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
