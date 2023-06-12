@@ -56,16 +56,14 @@ function mouseReleased() {
 function draw() {
   background(50);
 
-  if (mouseIsPressed) {
-    if (rightPressed) {
-      stroke(255, 100, 250);
-    }
-    if (leftPressed) {
-      stroke(255, 200, 50);
-    }
-    noFill();
-    ellipse(mouseX, mouseY, MOUSE_RADIUS, MOUSE_RADIUS);
+  if (rightPressed) {
+    stroke(255, 100, 250);
   }
+  if (leftPressed) {
+    stroke(255, 200, 50);
+  }
+  noFill();
+  ellipse(mouseX, mouseY, MOUSE_RADIUS, MOUSE_RADIUS);
 
   for (const boid of flock) {
     boid.wrap(min, max);
