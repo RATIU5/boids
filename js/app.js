@@ -20,8 +20,12 @@ const COS_SPEED = 3;
 
 const MOUSE_RADIUS = 200;
 
+const BOOST_SPEED = 10;
+
+let boost = false;
 let scaleSlider;
 let alnWSlider;
+let alnSSlider;
 function setup() {
   scaleSlider = createSlider(0, 10, 1);
   scaleSlider.position(10, 10);
@@ -30,6 +34,10 @@ function setup() {
   alnWSlider = createSlider(0, 1, 0.01, 0.01);
   alnWSlider.position(10, 30);
   alnWSlider.style("width", "150px");
+
+  alnSSlider = createSlider(0, 4, 8, 0.5);
+  alnSSlider.position(10, 60);
+  alnSSlider.style("width", "150px");
 
   for (let e of document.querySelectorAll(".p5Canvas")) {
     e.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -52,6 +60,14 @@ function keyPressed() {
 
   if (keyCode === 68) {
     flock.splice(0, 10);
+  }
+
+  if (keyCode == 66) {
+    boost = true;
+
+    setTimeout(() => {
+      boost = false;
+    }, 1000);
   }
 }
 
@@ -103,9 +119,21 @@ function draw() {
       boid.assignCohesionForce(flockmate, cohesionForce, COS_SIZE);
     }
 
-    boid.applySeparationForce(separationForce, SEP_WEIGHT, SEP_SPEED);
-    boid.applyAlignmentForce(alignmentForce, alnWSlider.value(), ALN_SPEED);
-    boid.applyCohesionForce(cohesionForce, COS_WEIGHT, COS_SPEED);
+    boid.applySeparationForce(
+      separationForce,
+      SEP_WEIGHT,
+      boost ? BOOST_SPEED : SEP_SPEED
+    );
+    boid.applyAlignmentForce(
+      alignmentForce,
+      alnWSlider.value(),
+      boost ? BOOST_SPEED : ALN_SPEED
+    );
+    boid.applyCohesionForce(
+      cohesionForce,
+      COS_WEIGHT,
+      boost ? BOOST_SPEED : COS_SPEED
+    );
 
     if (leftPressed) {
       boid.avoidPointForce(createVector(mouseX, mouseY), 0.5, 5, MOUSE_RADIUS);
@@ -115,7 +143,7 @@ function draw() {
       boid.towardPointForce(createVector(mouseX, mouseY), 0.5, 5, 500);
     }
 
-    boid.update(4);
+    boid.update(boost ? BOOST_SPEED : 4);
     boid.draw();
   }
 }
