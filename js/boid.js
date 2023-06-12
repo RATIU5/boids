@@ -148,6 +148,21 @@ class Boid {
     let d = dist(this.pos.x, this.pos.y, vector.x, vector.y);
     const steering = createVector(0, 0);
     let count = 0;
+
+    if (d < radius) {
+      const diff = p5.Vector.sub(this.pos, vector);
+      diff.div(d);
+      steering.add(diff);
+      count++;
+    }
+
+    if (count > 0) {
+      steering.div(count);
+      steering.setMag(maxSpeed);
+      steering.sub(this.vel);
+      steering.limit(maxForce);
+    }
+    this.applyForce(steering);
   }
 
   update(maxSpeed) {
