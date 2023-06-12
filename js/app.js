@@ -2,13 +2,9 @@ let flock = [];
 
 let min, max;
 
-let scaleSlider = createSlider(0, 10, 1);
-scaleSlider.position(10, 10);
-scaleSlider.style("width", "150px");
-
 const BOID_COUNT = 10;
 const PERCEPTION_RADIUS = 40;
-const SCALE = scaleSlider.value();
+const SCALE = 2;
 
 const SEP_SIZE = 30;
 const ALN_SIZE = 60;
@@ -24,7 +20,12 @@ const COS_SPEED = 3;
 
 const MOUSE_RADIUS = 200;
 
+let scaleSlider;
 function setup() {
+  scaleSlider = createSlider(0, 10, 1);
+  scaleSlider.position(10, 10);
+  scaleSlider.style("width", "150px");
+
   for (let e of document.querySelectorAll(".p5Canvas")) {
     e.addEventListener("contextmenu", (e) => e.preventDefault());
   }
@@ -121,7 +122,7 @@ function spawnBoids(amount) {
       pos: createVector(random(width), random(height)),
       vel: vel,
       perceptionRadius: PERCEPTION_RADIUS,
-      scale: SCALE,
+      scale: scaleSlider.value(),
       color: color(random(50, 255), random(50, 255), 100),
     });
     flock.push(boid);
