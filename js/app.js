@@ -48,6 +48,11 @@ function mouseClicked() {
   }
 }
 
+function mouseReleased() {
+  rightPressed = false;
+  leftPressed = false;
+}
+
 function draw() {
   background(50);
 
