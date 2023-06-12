@@ -18,6 +18,8 @@ const SEP_SPEED = 3.25;
 const ALN_SPEED = 3;
 const COS_SPEED = 3;
 
+const MOUSE_RADIUS = 200;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -34,6 +36,10 @@ function windowResized() {
 
 function draw() {
   background(50);
+
+  if (mouseIsPressed) {
+    ellipse(mouseX, mouseY, MOUSE_RADIUS, MOUSE_RADIUS);
+  }
 
   for (const boid of flock) {
     boid.wrap(min, max);
@@ -54,7 +60,7 @@ function draw() {
     boid.applyCohesionForce(cohesionForce, COS_WEIGHT, COS_SPEED);
 
     if (mouseIsPressed) {
-      boid.avoidPointForce(createVector(mouseX, mouseY), 0.25, 5, 200);
+      boid.avoidPointForce(createVector(mouseX, mouseY), 0.5, 5, 200);
     }
 
     boid.update(4);
