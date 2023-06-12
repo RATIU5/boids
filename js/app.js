@@ -21,10 +21,15 @@ const COS_SPEED = 3;
 const MOUSE_RADIUS = 200;
 
 let scaleSlider;
+let alnWSlider;
 function setup() {
   scaleSlider = createSlider(0, 10, 1);
   scaleSlider.position(10, 10);
   scaleSlider.style("width", "150px");
+
+  alnWSlider = createSlider(0, 1, 0.01, 0.01);
+  alnWSlider.position(10, 30);
+  alnWSlider.style("width", "150px");
 
   for (let e of document.querySelectorAll(".p5Canvas")) {
     e.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -73,6 +78,8 @@ function mouseReleased() {
 function draw() {
   background(50);
 
+  text("Scale", 10, 10);
+
   if (rightPressed) {
     stroke(255, 100, 250);
   }
@@ -97,7 +104,7 @@ function draw() {
     }
 
     boid.applySeparationForce(separationForce, SEP_WEIGHT, SEP_SPEED);
-    boid.applyAlignmentForce(alignmentForce, ALN_WEIGHT, ALN_SPEED);
+    boid.applyAlignmentForce(alignmentForce, alnWSlider.value(), ALN_SPEED);
     boid.applyCohesionForce(cohesionForce, COS_WEIGHT, COS_SPEED);
 
     if (leftPressed) {
