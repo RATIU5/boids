@@ -38,12 +38,30 @@ function windowResized() {
   max = createVector(windowWidth, windowHeight);
 }
 
+let rightPressed = false;
+let leftPressed = false;
+function mouseClicked() {
+  if (mouseButton === RIGHT) {
+    rightPressed = true;
+  } else if (mouseButton === LEFT) {
+    leftPressed = true;
+  }
+}
+
 function draw() {
   background(50);
 
   if (mouseIsPressed) {
-    stroke(255, 200, 50);
-    noFill();
+    if (rightPressed && !leftPressed) {
+      rightPressed = false;
+      stroke(255, 100, 250);
+      noFill();
+    }
+    if (leftPressed && !rightPressed) {
+      leftPressed = false;
+      stroke(255, 200, 50);
+      noFill();
+    }
     ellipse(mouseX, mouseY, MOUSE_RADIUS, MOUSE_RADIUS);
   }
 
