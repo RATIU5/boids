@@ -165,6 +165,27 @@ class Boid {
     this.applyForce(steering);
   }
 
+  towardPointForce(vector, maxForce = 0.2, maxSpeed = 4, perceptionRadius) {
+    const radius = perceptionRadius || this.perceptionRadius;
+    const steering = createVector(0, 0);
+    let count = 0;
+    let d = dist(this.pos.x, this.pos.y, vector.x, vector.y);
+
+    if (d < radius) {
+      const diff = p5.Vector.sub(this.pos, vector);
+      steering.add(diff);
+      count++;
+    }
+
+    if (count > 0) {
+      steering.div(count);
+      steering.setMag(maxSpeed);
+      steering.sub(this.vel);
+      steering.limit(maxForce);
+    }
+    this.applyForce(steering);
+  }
+
   update(maxSpeed) {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
