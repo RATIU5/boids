@@ -2,7 +2,7 @@ let flock = [];
 
 let min, max;
 
-const BOID_COUNT = 100;
+const BOID_COUNT = 10;
 const PERCEPTION_RADIUS = 40;
 const SCALE = 2;
 
@@ -10,7 +10,7 @@ const SEP_SIZE = 30;
 const ALN_SIZE = 60;
 const COS_SIZE = 40;
 
-const SEP_WEIGHT = 0.2;
+const SEP_WEIGHT = 0.5;
 const ALN_WEIGHT = 0.095;
 const COS_WEIGHT = 0.1;
 
@@ -31,6 +31,12 @@ function setup() {
   max = createVector(width, height);
 
   spawnBoids(BOID_COUNT);
+}
+
+function keyPressed() {
+  if (keyCode === 83) {
+    spawnBoids(10);
+  }
 }
 
 function windowResized() {
