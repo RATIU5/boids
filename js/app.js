@@ -2,9 +2,13 @@ let flock = [];
 
 let min, max;
 
+let scaleSlider = createSlider(0, 10, 1);
+scaleSlider.position(10, 10);
+scaleSlider.style("width", "150px");
+
 const BOID_COUNT = 10;
 const PERCEPTION_RADIUS = 40;
-const SCALE = 2;
+const SCALE = scaleSlider.value();
 
 const SEP_SIZE = 30;
 const ALN_SIZE = 60;
