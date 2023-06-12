@@ -62,7 +62,7 @@ function keyPressed() {
     flock.splice(0, 10);
   }
 
-  if (keyCode == 66) {
+  if (keyCode === 66) {
     boost = true;
 
     setTimeout(() => {
