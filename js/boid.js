@@ -173,6 +173,7 @@ class Boid {
 
     if (d < radius) {
       const diff = p5.Vector.sub(this.pos, vector);
+      diff.div(-1 / d);
       steering.add(diff);
       count++;
     }
