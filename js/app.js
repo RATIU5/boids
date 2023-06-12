@@ -88,7 +88,7 @@ function draw() {
     }
 
     if (rightPressed) {
-      boid.towardPointForce(createVector(mouseX, mouseY), 0.5, 5, MOUSE_RADIUS);
+      boid.towardPointForce(createVector(mouseX, mouseY), 0.5, 5, 500);
     }
 
     boid.update(4);
