@@ -21,6 +21,10 @@ const COS_SPEED = 3;
 const MOUSE_RADIUS = 200;
 
 function setup() {
+  for (let e of document.querySelectorAll(".p5Canvas")) {
+    e.addEventListener("contextmenu", (e) => e.preventDefault());
+  }
+
   createCanvas(windowWidth, windowHeight);
 
   min = createVector(0, 0);
