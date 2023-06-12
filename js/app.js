@@ -35,7 +35,13 @@ function setup() {
 
 function keyPressed() {
   if (keyCode === 83) {
-    spawnBoids(10);
+    if (flock.length < 300) {
+      spawnBoids(10);
+    }
+  }
+
+  if (keyCode === 68) {
+    flock.splice(0, 10);
   }
 }
 
