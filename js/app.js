@@ -38,6 +38,8 @@ function draw() {
   background(50);
 
   if (mouseIsPressed) {
+    stroke(255, 200, 50);
+    noFill();
     ellipse(mouseX, mouseY, MOUSE_RADIUS, MOUSE_RADIUS);
   }
 
@@ -60,7 +62,7 @@ function draw() {
     boid.applyCohesionForce(cohesionForce, COS_WEIGHT, COS_SPEED);
 
     if (mouseIsPressed) {
-      boid.avoidPointForce(createVector(mouseX, mouseY), 0.5, 5, 200);
+      boid.avoidPointForce(createVector(mouseX, mouseY), 0.5, 5, MOUSE_RADIUS);
     }
 
     boid.update(4);
