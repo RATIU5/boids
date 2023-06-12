@@ -40,7 +40,7 @@ function windowResized() {
 
 let rightPressed = false;
 let leftPressed = false;
-function mouseClicked() {
+function mousePressed() {
   if (mouseButton === RIGHT) {
     rightPressed = true;
   } else if (mouseButton === LEFT) {
@@ -57,16 +57,13 @@ function draw() {
   background(50);
 
   if (mouseIsPressed) {
-    if (rightPressed && !leftPressed) {
-      rightPressed = false;
+    if (rightPressed) {
       stroke(255, 100, 250);
-      noFill();
     }
-    if (leftPressed && !rightPressed) {
-      leftPressed = false;
+    if (leftPressed) {
       stroke(255, 200, 50);
-      noFill();
     }
+    noFill();
     ellipse(mouseX, mouseY, MOUSE_RADIUS, MOUSE_RADIUS);
   }
 
