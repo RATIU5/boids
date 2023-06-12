@@ -143,6 +143,13 @@ class Boid {
     }
   }
 
+  avoidPointForce(vector, maxForce = 0.2, maxSpeed = 4, perceptionRadius) {
+    const radius = perceptionRadius ?? this.perceptionRadius;
+    let d = dist(this.pos.x, this.pos.y, vector.x, vector.y);
+    const steering = createVector(0, 0);
+    let count = 0;
+  }
+
   update(maxSpeed) {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
