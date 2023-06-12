@@ -83,8 +83,12 @@ function draw() {
     boid.applyAlignmentForce(alignmentForce, ALN_WEIGHT, ALN_SPEED);
     boid.applyCohesionForce(cohesionForce, COS_WEIGHT, COS_SPEED);
 
-    if (mouseIsPressed) {
+    if (leftPressed) {
       boid.avoidPointForce(createVector(mouseX, mouseY), 0.5, 5, MOUSE_RADIUS);
+    }
+
+    if (rightPressed) {
+      boid.towardPointForce(createVector(mouseX, mouseY), 0.5, 5, MOUSE_RADIUS);
     }
 
     boid.update(4);
